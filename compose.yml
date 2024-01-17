@@ -2,7 +2,7 @@
 version: '3.6'
 services:
   influxdb:
-    image: influxdb:2.5.1-alpine
+    image: influxdb
     container_name: influxdb
     restart: unless-stopped
     networks:
@@ -11,6 +11,13 @@ services:
       - '8086:8086'
     volumes:
       - influxdb_data:/var/lib/influxdb2
+      - influxdb_confix:/etc/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
 
   grafana:
     image: grafana/grafana
@@ -37,3 +44,4 @@ networks:
 volumes:
   grafana_data:
   influxdb_data:
+  influxdb_confix:
