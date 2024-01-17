@@ -1,0 +1,13 @@
+apiVersion: 1
+datasources:
+  - name: InfluxDB_v2_Flux
+    type: influxdb
+    access: proxy
+    user: admin
+    password: secret-password
+    url: http://influxdb:8086
+    jsonData:
+      version: Flux
+      organization: my-init-org
+      defaultBucket: my-init-bucket
+      tlsSkipVerify: true
