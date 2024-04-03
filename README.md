@@ -1,5 +1,9 @@
 # Compose Grafana InfluxDB
+`InfluxDB` + `Grafana` + `...`
 
+> Values must be changed in `.env` and `datasource.yml`
+
+Run local stack
 ```sh
 docker compose up -d
 ```
